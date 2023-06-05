@@ -30,10 +30,16 @@
             <remap from="scan_filtered" to="bottom_laser_scan_left" />
         </node>
 
+        <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="laser_filter_right">
+            <rosparam command="load" file="$(find rplidar_ros)/configs/bottom_lidar_filter_back.yaml" />
+            <remap from="scan" to="bottom_laser_scan" />
+            <remap from="scan_filtered" to="bottom_laser_scan_back" />
+        </node>
+
         <node name="laserscan_multi_merger" pkg="ira_laser_tools" type="laserscan_multi_merger" output="screen" respawn="true">
             <param name="destination_frame" value="bottom_laser_link"/>
             <param name="scan_destination_topic" value="/bottom_laser_scan_filtered"/>
-            <param name="laserscan_topics" value="/bottom_laser_scan_left /bottom_laser_scan_right"/>
+            <param name="laserscan_topics" value="/bottom_laser_scan_left /bottom_laser_scan_right /bottom_laser_scan_back"/>
             <param name="angle_min" type="double" value="-3.142"/>
             <param name="angle_max" type="double" value="3.142"/>
             <param name="range_min" type="double" value="0.15"/>
