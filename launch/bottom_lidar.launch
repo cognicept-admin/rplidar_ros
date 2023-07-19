@@ -1,5 +1,5 @@
 <launch>
-    <arg name="bottom_laser" value="0.4859 0 0.1248 3.142 0 3.142 base_link bottom_laser_link 10"/>
+    <arg name="bottom_laser" value="0.4859 0 0.1248 3.142 0 3.142 base_link bottom_laser_link"/>
     <arg name="bottom_lidar_filter_enable"    value="$(optenv BOTTOM_LIDAR_FILTER_ENABLE false)"/>
 
     <env name="ROSCONSOLE_CONFIG_FILE" value="$(find rplidar_ros)/configs/custom_rosconsole.conf"/>
@@ -18,19 +18,19 @@
     </node>
     
     <group if="$(arg bottom_lidar_filter_enable)">
-        <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="laser_filter_right">
+        <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="bottom_lidar_filter_right">
             <rosparam command="load" file="$(find rplidar_ros)/configs/bottom_lidar_filter_right.yaml" />
             <remap from="scan" to="bottom_laser_scan" />
             <remap from="scan_filtered" to="bottom_laser_scan_right" />
         </node>
 
-        <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="laser_filter_left">
+        <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="bottom_lidar_filter_left">
             <rosparam command="load" file="$(find rplidar_ros)/configs/bottom_lidar_filter_left.yaml" />
             <remap from="scan" to="bottom_laser_scan" />
             <remap from="scan_filtered" to="bottom_laser_scan_left" />
         </node>
 
-        <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="laser_filter_right">
+        <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="bottom_lidar_filter_back">
             <rosparam command="load" file="$(find rplidar_ros)/configs/bottom_lidar_filter_back.yaml" />
             <remap from="scan" to="bottom_laser_scan" />
             <remap from="scan_filtered" to="bottom_laser_scan_back" />
