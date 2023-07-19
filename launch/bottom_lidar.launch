@@ -4,7 +4,7 @@
 
     <env name="ROSCONSOLE_CONFIG_FILE" value="$(find rplidar_ros)/configs/custom_rosconsole.conf"/>
 
-    <node pkg="tf" type="static_transform_publisher" name="bottom_laser_tf" args="$(arg bottom_laser)" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="bottom_laser_tf" args="$(arg bottom_laser)" />
 
     <node name="bottom_rplidar_node" pkg="rplidar_ros" type="rplidarNode" output="screen">
         <param name="channel_type"        type="string" value="udp"/>  

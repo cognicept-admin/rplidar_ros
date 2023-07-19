@@ -2,9 +2,9 @@
 
   <!-- publish tf -->
   <!-- left -->
-  <node pkg="tf" type="static_transform_publisher" name="left_laser_tf" args="0.233070 0.149933 1.032733 1.571 1.396260 0 base_link left_laser_link 10" />
+  <node pkg="tf2_ros" type="static_transform_publisher" name="left_laser_tf" args="0.233070 0.149933 1.032733 1.571 1.396260 -0.1 base_link left_laser_link" />
   <!-- right -->
-  <node pkg="tf" type="static_transform_publisher" name="right_laser_tf" args="0.233070 -0.149933  1.032733 -1.571 1.396260 0 base_link right_laser_link 10" />
+  <node pkg="tf2_ros" type="static_transform_publisher" name="right_laser_tf" args="0.233070 -0.149933  1.032733 -1.571 1.396260 0.0 base_link right_laser_link" />
   
   <node name="right_rplidar_node" pkg="rplidar_ros"  type="rplidarNode" output="screen">
     <param name="channel_type"        type="string" value="udp"/>  
