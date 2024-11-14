@@ -1,10 +1,18 @@
 <launch>
 
+  <!-- Load tf params for side lidars -->
+  <rosparam file="$(find rplidar_ros)/config/side_lidar_config.yaml" command="load"/>
+
   <!-- publish tf -->
-  <!-- left -->
-  <node pkg="tf" type="static_transform_publisher" name="left_laser_tf" args="0.233070 0.149933 1.032733 1.571 1.396260 0 base_link left_laser_link 10" />
-  <!-- right -->
-  <node pkg="tf" type="static_transform_publisher" name="right_laser_tf" args="0.233070 -0.149933  1.032733 -1.571 1.396260 0 base_link right_laser_link 10" />
+  <!-- Launch left_lidar_tf node -->
+  <node pkg="rplidar_ros" type="side_lidar_tf" name="left_lidar_tf" respawn= "true" output="screen">
+    <param name="lidar_side" value="left_lidar"/>
+  </node>
+
+  <!-- Launch right_lidar_tf node -->
+  <node pkg="rplidar_ros" type="side_lidar_tf" name="right_lidar_tf" respawn= "true" output="screen">
+    <param name="lidar_side" value="right_lidar"/>
+  </node>
   
   <node name="right_rplidar_node" pkg="rplidar_ros"  type="rplidarNode" output="screen">
     <param name="channel_type"        type="string" value="udp"/>  

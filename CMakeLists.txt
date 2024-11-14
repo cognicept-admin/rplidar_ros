@@ -15,6 +15,10 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rosconsole
   sensor_msgs
+  roscpp
+  tf2
+  tf2_ros
+  geometry_msgs
 )
 
 include_directories(
@@ -24,6 +28,9 @@ include_directories(
 )
 
 catkin_package()
+
+add_executable(side_lidar_tf src/side_lidar_tf.cpp)
+target_link_libraries(side_lidar_tf ${catkin_LIBRARIES})
 
 add_executable(rplidarNode src/node.cpp ${RPLIDAR_SDK_SRC})
 target_link_libraries(rplidarNode ${catkin_LIBRARIES})
