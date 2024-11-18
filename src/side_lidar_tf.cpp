@@ -48,6 +48,12 @@ int main(int argc, char** argv)
     nh.getParam(lidar_side + "/parent_frame", parent_frame);
     nh.getParam(lidar_side + "/child_frame", child_frame);
 
+    ROS_INFO_THROTTLE(2, "Broadcasting Transform:");
+    ROS_INFO_THROTTLE(2, "Parent Frame: %s", parent_frame.c_str());
+    ROS_INFO_THROTTLE(2, "Child Frame: %s", child_frame.c_str());
+    ROS_INFO_THROTTLE(2, "Translation: x=%f, y=%f, z=%f", x, y, z);
+    ROS_INFO_THROTTLE(2, "Rotation: roll=%f, pitch=%f, yaw=%f", roll, pitch, yaw);
+
     broadcastStaticTransform(x, y, z, roll, pitch, yaw, parent_frame, child_frame);
 
     ros::spin();
