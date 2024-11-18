@@ -1,17 +1,16 @@
 <launch>
 
-  <!-- Load tf params for side lidars -->
-  <rosparam file="$(find rplidar_ros)/config/side_lidar_config.yaml" command="load"/>
-
   <!-- publish tf -->
   <!-- Launch left_lidar_tf node -->
   <node pkg="rplidar_ros" type="side_lidar_tf" name="left_lidar_tf" respawn= "true" output="screen">
     <param name="lidar_side" value="left_lidar"/>
+    <rosparam file="$(find rplidar_ros)/config/side_lidar_config.yaml" command="load"/>
   </node>
 
   <!-- Launch right_lidar_tf node -->
   <node pkg="rplidar_ros" type="side_lidar_tf" name="right_lidar_tf" respawn= "true" output="screen">
     <param name="lidar_side" value="right_lidar"/>
+    <rosparam file="$(find rplidar_ros)/config/side_lidar_config.yaml" command="load"/>
   </node>
   
   <node name="right_rplidar_node" pkg="rplidar_ros"  type="rplidarNode" output="screen">
