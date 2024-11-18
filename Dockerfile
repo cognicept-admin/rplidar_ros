@@ -11,13 +11,10 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists
 
-WORKDIR /home/slamtec_lidar_ws/src
+WORKDIR /home/slamtec_lidar_ws
 
-COPY . /home/slamtec_lidar_ws/src/rplidar_ros
-
-WORKDIR /home/slamtec_lidar_ws/
+COPY . src/
 
 RUN /ros_entrypoint.sh catkin_make && sed -i '$isource "/home/slamtec_lidar_ws/devel/setup.bash"' /ros_entrypoint.sh
 
 ENTRYPOINT ["/ros_entrypoint.sh"]
-CMD ["bash"]
