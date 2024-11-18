@@ -20,4 +20,4 @@ WORKDIR /home/slamtec_lidar_ws/
 RUN /ros_entrypoint.sh catkin_make && sed -i '$isource "/home/slamtec_lidar_ws/devel/setup.bash"' /ros_entrypoint.sh
 
 ENTRYPOINT ["/ros_entrypoint.sh"]
-CMD roslaunch rplidar_ros combined_lidar.launch --wait
+CMD ["bash"]

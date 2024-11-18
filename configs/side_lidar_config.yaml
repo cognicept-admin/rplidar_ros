@@ -1,0 +1,19 @@
+left_lidar:
+  x: 0.0
+  y: 0.0
+  z: 0.0
+  roll: 0.0
+  pitch: 0.0
+  yaw:  0.0
+  parent_frame: "base_link"
+  child_frame: "left_laser_link"
+
+right_lidar:
+  x: 0.0
+  y: 0.0
+  z: 0.0
+  roll: 0.0
+  pitch: 0.0
+  yaw:  0.0
+  parent_frame: "base_link"
+  child_frame: "right_laser_link"
