@@ -2,20 +2,20 @@
 
   <!-- publish tf -->
   <!-- Launch left_lidar_tf node -->
-  <node pkg="rplidar_ros" type="side_lidar_tf" name="left_lidar_tf" respawn= "true" output="screen">
-    <param name="lidar_side" value="left_lidar"/>
+  <node pkg="rplidar_ros" type="tf_broadcaster" name="left_lidar_tf" respawn= "true" output="screen">
+    <param name="lidar_name" value="left_lidar"/>
     <rosparam file="$(find rplidar_ros)/config/side_lidar_config.yaml" command="load"/>
   </node>
 
   <!-- Launch right_lidar_tf node -->
-  <node pkg="rplidar_ros" type="side_lidar_tf" name="right_lidar_tf" respawn= "true" output="screen">
-    <param name="lidar_side" value="right_lidar"/>
+  <node pkg="rplidar_ros" type="tf_broadcaster" name="right_lidar_tf" respawn= "true" output="screen">
+    <param name="lidar_name" value="right_lidar"/>
     <rosparam file="$(find rplidar_ros)/config/side_lidar_config.yaml" command="load"/>
   </node>
-  
+
   <node name="right_rplidar_node" pkg="rplidar_ros"  type="rplidarNode" output="screen">
-    <param name="channel_type"        type="string" value="udp"/>  
-    <param name="udp_ip"              type="string" value="10.7.5.152"/>  
+    <param name="channel_type"        type="string" value="udp"/>
+    <param name="udp_ip"              type="string" value="10.7.5.152"/>
     <param name="frame_id"            type="string" value="right_laser_link"/>
     <param name="inverted"            type="bool"   value="false"/>
     <param name="angle_compensate"    type="bool"   value="true"/>
@@ -25,8 +25,8 @@
   </node>
 
   <node name="left_rplidar_node" pkg="rplidar_ros"  type="rplidarNode" output="screen">
-    <param name="channel_type"        type="string" value="udp"/>  
-    <param name="udp_ip"              type="string" value="10.7.5.153"/>  
+    <param name="channel_type"        type="string" value="udp"/>
+    <param name="udp_ip"              type="string" value="10.7.5.153"/>
     <param name="frame_id"            type="string" value="left_laser_link"/>
     <param name="inverted"            type="bool"   value="false"/>
     <param name="angle_compensate"    type="bool"   value="true"/>

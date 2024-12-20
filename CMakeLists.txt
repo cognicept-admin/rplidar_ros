@@ -5,7 +5,7 @@ set(RPLIDAR_SDK_PATH "./sdk/")
 set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 
-FILE(GLOB RPLIDAR_SDK_SRC 
+FILE(GLOB RPLIDAR_SDK_SRC
   "${RPLIDAR_SDK_PATH}/src/arch/linux/*.cpp"
   "${RPLIDAR_SDK_PATH}/src/hal/*.cpp"
   "${RPLIDAR_SDK_PATH}/src/*.cpp"
@@ -29,8 +29,8 @@ include_directories(
 
 catkin_package()
 
-add_executable(side_lidar_tf src/side_lidar_tf.cpp)
-target_link_libraries(side_lidar_tf ${catkin_LIBRARIES})
+add_executable(tf_broadcaster src/tf_broadcaster.cpp)
+target_link_libraries(tf_broadcaster ${catkin_LIBRARIES})
 
 add_executable(rplidarNode src/node.cpp ${RPLIDAR_SDK_SRC})
 target_link_libraries(rplidarNode ${catkin_LIBRARIES})
