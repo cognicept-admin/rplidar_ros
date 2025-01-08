@@ -27,5 +27,4 @@
     <param name="scan_frequency"      type="int"  value="10"/>
     <remap from="scan" to="left_laser_scan"/>
   </node>
-
 </launch>
