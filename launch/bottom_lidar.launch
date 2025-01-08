@@ -1,10 +1,10 @@
 <launch>
-    <arg name="bottom_laser" value="0.4859 0 0.1248 3.142 0 3.142 base_link bottom_laser_link 10"/>
+    <arg name="bottom_laser" value="0.4859 0 0.1248 3.142 0 3.142 base_link bottom_laser_link"/>
     <arg name="bottom_lidar_filter_enable"    value="$(optenv BOTTOM_LIDAR_FILTER_ENABLE false)"/>
 
     <env name="ROSCONSOLE_CONFIG_FILE" value="$(find rplidar_ros)/configs/custom_rosconsole.conf"/>
 
-    <node pkg="tf" type="static_transform_publisher" name="bottom_laser_tf" args="$(arg bottom_laser)" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="bottom_laser_tf" args="$(arg bottom_laser)" />
 
     <node name="bottom_rplidar_node" pkg="rplidar_ros" type="rplidarNode" output="screen">
         <param name="channel_type"        type="string" value="udp"/>  
@@ -47,4 +47,3 @@
         </node>
     </group>
 </launch>
-  
