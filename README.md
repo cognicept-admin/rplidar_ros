@@ -148,3 +148,7 @@ Notice: different lidar use different serial_baudrate.
 ## RPLidar frame
 
 RPLidar frame must be broadcasted according to picture shown in rplidar-frame.png
+
+---
+
+Refer to [this](./CHANGELOG_KABAM.md) for KABAM's release notes
